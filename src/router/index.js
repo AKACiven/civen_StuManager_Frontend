@@ -77,6 +77,22 @@ export const asyncRoutes = [
   },
 
   {
+    path: '/Student',
+    name: '学生管理',
+    component: Layout,
+    hidden: false,
+    meta: { title: '学生管理', icon: 'el-icon-s-home' },
+    children: [
+      {
+        path: 'Update',
+        name: 'Update',
+        component: () => import('@/views/student/stuUpdate'),
+        meta: { title: '更新学生信息', icon: 'el-icon-s-home' }
+      }
+    ]
+  },
+
+  {
     path: '/test',
     name: 'Test',
     component: Layout,
