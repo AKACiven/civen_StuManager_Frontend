@@ -1,24 +1,16 @@
 import request from '@/utils/request'
 
-export function pathSubmit(data) {
+export function updateStudent(data) {
   return request({
-    url: '/path/submit',
+    url: '/updateStudent',
     method: 'post',
     data
   })
 }
 
-export function addtoPath(data) {
+export function addStudent(data) {
   return request({
-    url: '/home/addtopath',
-    method: 'post',
-    data
-  })
-}
-
-export function eValuate(data) {
-  return request({
-    url: '/evaluate',
+    url: '/addStudent',
     method: 'post',
     data
   })

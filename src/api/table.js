@@ -7,4 +7,18 @@ export function getStudent(params) {
     params
   })
 }
+export function checkStudent(params) {
+  return request({
+    url: '/checkStudent',
+    method: 'get',
+    params
+  })
+}
 
+export function checkStuCourse(params) {
+  return request({
+    url: '/checkStuCourse',
+    method: 'get',
+    params
+  })
+}

@@ -20,13 +20,16 @@
         <el-input v-model="updateStu.sage"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button type="primary" @click="stu_update()">修改信息</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+
+import { checkStudent } from '@/api/table'
+import { updateStudent } from '@/api/record'
 
 export default {
   data() {
@@ -40,7 +43,38 @@ export default {
       }
     }
   },
+  created() {
+    if (this.$route.query.sno == null) {
+      this.$alert('请先在学生列表进行操作！', '提示', {
+        confirmButtonText: '前往学生列表',
+        callback: action => {
+          this.$router.push({
+            path: '/Home'
+          })
+        }
+      })
+    } else {
+      this.fetchData()
+    }
+  },
   methods: {
+    fetchData() {
+      checkStudent({ sno: this.$route.query.sno }).then(response => {
+        this.updateStu = response.data
+      })
+    },
+    stu_update() {
+      updateStudent(this.updateStu).then(() => {
+        this.$alert('修改成功！', '消息', {
+          confirmButtonText: '确认',
+          callback: action => {
+            this.$router.push({
+              path: '/Home'
+            })
+          }
+        })
+      })
+    }
   }
 }
 </script>
