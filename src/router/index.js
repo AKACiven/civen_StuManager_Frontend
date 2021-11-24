@@ -93,6 +93,28 @@ export const asyncRoutes = [
   },
 
   {
+    path: '/Department',
+    name: '院系统计',
+    component: Layout,
+    hidden: false,
+    meta: { title: '院系统计', icon: 'el-icon-s-home' },
+    children: [
+      {
+        path: 'GradeScale',
+        name: 'GradeScale',
+        component: () => import('@/views/department/scale'),
+        meta: { title: '总体成绩', icon: 'el-icon-s-home' }
+      },
+      {
+        path: 'GradeRank',
+        name: 'GradeRank',
+        component: () => import('@/views/department/rank'),
+        meta: { title: '系排名', icon: 'el-icon-s-home' }
+      }
+    ]
+  },
+
+  {
     path: '/test',
     name: 'Test',
     component: Layout,

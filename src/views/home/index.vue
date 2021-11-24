@@ -3,6 +3,14 @@
     <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
       添加学生
     </el-button>
+    <el-divider direction="vertical"></el-divider>
+    <el-button @click="checkrank()" type="primary" style="margin-left: 0px;">
+      系排名
+    </el-button>
+    <el-divider direction="vertical"></el-divider>
+    <el-button @click="checkscale" type="primary" style="margin-left: 0px;">
+      总体成绩
+    </el-button>
     <el-divider></el-divider>
     <template>
       <el-table
@@ -202,6 +210,16 @@ export default {
         this.$alert('修改成功！', '消息', {
           confirmButtonText: '确认'
         })
+      })
+    },
+    checkrank() {
+      this.$router.push({
+        path: '/Department/GradeRank',
+      })
+    },
+    checkscale() {
+      this.$router.push({
+        path: '/Department/GradeScale',
       })
     }
   }
