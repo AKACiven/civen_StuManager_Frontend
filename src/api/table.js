@@ -22,3 +22,11 @@ export function checkStuCourse(params) {
     params
   })
 }
+
+export function editGrade(params) {
+  return request({
+    url: '/editGrade',
+    method: 'get',
+    params
+  })
+}

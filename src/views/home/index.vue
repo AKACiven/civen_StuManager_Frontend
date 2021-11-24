@@ -6,7 +6,7 @@
     <el-divider></el-divider>
     <template>
       <el-table
-        :data="tableData.filter(data => !search || data.sno.toLowerCase().includes(search.toLowerCase()))"
+        :data="tableData.filter(data => !search || data.sno.toLowerCase().includes(search.toLowerCase()) || data.sname.toLowerCase().includes(search.toLowerCase()))"
         border
         style="width: 100%">
         <el-table-column
@@ -62,7 +62,7 @@
 <!--              <el-button slot="reference" type="success" size="small" @click="checkstucourse(scope.row)">查看课程</el-button>-->
 <!--            </el-popover>-->
             <el-divider direction="vertical"></el-divider>
-            <el-button type="primary" icon="el-icon-star-off" size="small" @click="checkstucourse(scope.row); dialogVisible1 = true">课程</el-button>
+            <el-button type="primary" icon="el-icon-star-off" size="small" @click="checkstucourse(scope.row); dialogVisible1 = true; temp.sno = scope.row.sno">课程</el-button>
           </template>
         </el-table-column>s
       </el-table>
@@ -96,27 +96,32 @@
       </el-form>
     </el-drawer>
     <el-dialog
-      title="学生课程信息"
+      title="成绩修改"
       :visible.sync="dialogVisible"
       width="20%">
       <span>
         <el-input v-model="gradeinput" placeholder="请输入内容"></el-input>
       </span>
       <span slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="dialogVisible = false">提交</el-button>
+        <el-button type="primary" @click="dialogVisible = false; temp.grade = gradeinput; editgrade()">提交</el-button>
         <el-button @click="dialogVisible = false">关闭</el-button>
       </span>
     </el-dialog>
     <el-dialog
       title="学生课程信息"
       :visible.sync="dialogVisible1"
-      width="30%">
+      width="40%">
       <span>
         <el-table :data="stuCourse">
-          <el-table-column width="150" property="cname" label="课程"/>
+          <el-table-column width="100" property="cno" label="课程号"></el-table-column>
+          <el-table-column width="150" property="cname" label="课程"></el-table-column>
           <el-table-column width="150" property="grade" label="分数"></el-table-column>
-          <el-table-column width="150">
-            <el-button type="primary" icon="el-icon-edit" circle @click="dialogVisible = true"></el-button>
+          <el-table-column label="操作" width="100">
+            <template slot-scope="scope">
+              <el-table-column width="150">
+                <el-button type="primary" icon="el-icon-edit" circle @click="dialogVisible = true; temp.cno = scope.row.cno; temp.grade = scope.row.grade"></el-button>
+              </el-table-column>
+            </template>
           </el-table-column>
         </el-table>
       </span>
@@ -128,7 +133,7 @@
 </template>
 
 <script>
-import { checkStuCourse, getStudent } from '@/api/table'
+import { checkStuCourse, editGrade, getStudent } from '@/api/table'
 import { addStudent } from '@/api/record'
 
 export default {
@@ -145,11 +150,14 @@ export default {
         sage: null
       },
       stuCourse: {
+        cno: null,
         cname: null,
         grade: null
       },
-      tempsno: {
-        sno: null
+      temp: {
+        sno: null,
+        cno: null,
+        grade: null
       },
       dialogVisible: false,
       dialogVisible1: false,
@@ -187,6 +195,13 @@ export default {
       checkStuCourse({ sno: row.sno }).then(response => {
         this.stuCourse = response.data
         this.tempsno = row.sno
+      })
+    },
+    editgrade() {
+      editGrade(this.temp).then(() => {
+        this.$alert('修改成功！', '消息', {
+          confirmButtonText: '确认'
+        })
       })
     }
   }
