@@ -16,7 +16,7 @@
       <el-table
         :data="tableData.filter(data => !search || data.sno.toLowerCase().includes(search.toLowerCase()) || data.sname.toLowerCase().includes(search.toLowerCase()))"
         border
-        style="width: 100%">
+        style="width: 100%; box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)">
         <el-table-column
           prop="sno"
           label="学号"
@@ -214,12 +214,12 @@ export default {
     },
     checkrank() {
       this.$router.push({
-        path: '/Department/GradeRank',
+        path: '/Department/GradeRank'
       })
     },
     checkscale() {
       this.$router.push({
-        path: '/Department/GradeScale',
+        path: '/Department/GradeScale'
       })
     }
   }

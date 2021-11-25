@@ -30,3 +30,19 @@ export function editGrade(params) {
     params
   })
 }
+
+export function gradeScale(params) {
+  return request({
+    url: '/gradeScale',
+    method: 'get',
+    params
+  })
+}
+
+export function deptGrades(params) {
+  return request({
+    url: '/deptGrades',
+    method: 'get',
+    params
+  })
+}
