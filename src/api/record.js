@@ -15,3 +15,11 @@ export function addStudent(data) {
     data
   })
 }
+
+export function addCourse(data) {
+  return request({
+    url: '/addCourse',
+    method: 'post',
+    data
+  })
+}

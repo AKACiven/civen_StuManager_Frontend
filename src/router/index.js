@@ -115,6 +115,22 @@ export const asyncRoutes = [
   },
 
   {
+    path: '/Course',
+    name: '课程',
+    component: Layout,
+    hidden: false,
+    meta: { title: '课程', icon: 'el-icon-s-home' },
+    children: [
+      {
+        path: 'CourseScale',
+        name: 'CourseScale',
+        component: () => import('@/views/course/coursetable'),
+        meta: { title: '课程总览', icon: 'el-icon-s-home' }
+      }
+    ]
+  },
+
+  {
     path: '/test',
     name: 'Test',
     component: Layout,

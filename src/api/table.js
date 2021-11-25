@@ -46,3 +46,19 @@ export function deptGrades(params) {
     params
   })
 }
+
+export function courseScale(params) {
+  return request({
+    url: '/courseScale',
+    method: 'get',
+    params
+  })
+}
+
+export function updateCourse(params) {
+  return request({
+    url: '/updateCourse',
+    method: 'get',
+    params
+  })
+}
