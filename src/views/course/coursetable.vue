@@ -4,8 +4,7 @@
       添加课程
     </el-button>
     <el-divider direction="vertical"></el-divider>
-    <el-button @click="" type="primary" style="margin-left: 0px;">删除无选课课程</el-button>
-    <el-divider></el-divider>
+    <el-button @click="squeeze" type="primary" style="margin-left: 0px;">删除无选课课程</el-button>
     <el-divider></el-divider>
     <template>
       <el-table
@@ -33,8 +32,9 @@
           label="操作"
           style="width: 25%">
           <template slot-scope="scope">
-            <el-button @click="dialogVisible2 = true; course_cno = scope.row.cno; course_name = scope.row.cname" type="primary" size="small">编辑</el-button>
-            <el-button @click="" type="success" size="small">录入成绩</el-button>
+            <el-button @click="dialogVisible2 = true; course_cno = scope.row.cno; course_name = scope.row.cname" type="danger" size="small">编辑</el-button>
+            <el-button @click="checkin(scope.row)" type="success" size="small">录入成绩</el-button>
+            <el-button @click="checkout(scope.row)" type="warning" size="small">添加学生</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -78,7 +78,7 @@
 
 <script>
 
-import { courseScale, updateCourse } from '@/api/table'
+import { courseScale, squeezeCourse, updateCourse } from '@/api/table'
 import { addCourse } from '@/api/record'
 
 export default {
@@ -124,6 +124,32 @@ export default {
             window.location.reload()
           }
         })
+      })
+    },
+    squeeze() {
+      squeezeCourse().then(response => {
+        this.$alert('执行成功！', '消息', {
+          confirmButtonText: '确认',
+          callback: action => {
+            window.location.reload()
+          }
+        })
+      })
+    },
+    checkin(row) {
+      this.$router.push({
+        path: '/Course/InCourse',
+        query: {
+          cno: row.cno
+        }
+      })
+    },
+    checkout(row) {
+      this.$router.push({
+        path: '/Course/outCourse',
+        query: {
+          cno: row.cno
+        }
       })
     }
   }

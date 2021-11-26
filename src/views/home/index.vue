@@ -11,6 +11,10 @@
     <el-button @click="checkscale" type="primary" style="margin-left: 0px;">
       总体成绩
     </el-button>
+    <el-divider direction="vertical"></el-divider>
+    <el-button @click="checkcourse" type="primary" style="margin-left: 0px;">
+      课程安排
+    </el-button>
     <el-divider></el-divider>
     <template>
       <el-table
@@ -220,6 +224,11 @@ export default {
     checkscale() {
       this.$router.push({
         path: '/Department/GradeScale'
+      })
+    },
+    checkcourse() {
+      this.$router.push({
+        path: '/Course/CourseScale'
       })
     }
   }

@@ -126,6 +126,18 @@ export const asyncRoutes = [
         name: 'CourseScale',
         component: () => import('@/views/course/coursetable'),
         meta: { title: '课程总览', icon: 'el-icon-s-home' }
+      },
+      {
+        path: 'InCourse',
+        name: 'InCourse',
+        component: () => import('@/views/course/incourse'),
+        meta: { title: '录入成绩', icon: 'el-icon-s-home' }
+      },
+      {
+        path: 'OutCourse',
+        name: 'OutCourse',
+        component: () => import('@/views/course/outcourse'),
+        meta: { title: '添加学生', icon: 'el-icon-s-home' }
       }
     ]
   },
@@ -134,7 +146,7 @@ export const asyncRoutes = [
     path: '/test',
     name: 'Test',
     component: Layout,
-    hidden: false,
+    hidden: true,
     meta: { title: 'Test', icon: 'el-icon-s-home' },
     children: [
       {

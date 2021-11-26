@@ -62,3 +62,35 @@ export function updateCourse(params) {
     params
   })
 }
+
+export function squeezeCourse(params) {
+  return request({
+    url: '/squeezeCourse',
+    method: 'get',
+    params
+  })
+}
+
+export function checkInCourse(params) {
+  return request({
+    url: '/checkInCourse',
+    method: 'get',
+    params
+  })
+}
+
+export function checkOutCourse(params) {
+  return request({
+    url: '/checkOutCourse',
+    method: 'get',
+    params
+  })
+}
+
+export function addStuToCo(params) {
+  return request({
+    url: '/addStuToCo',
+    method: 'get',
+    params
+  })
+}
