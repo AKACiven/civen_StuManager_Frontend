@@ -81,13 +81,13 @@ export const asyncRoutes = [
     name: '学生管理',
     component: Layout,
     hidden: false,
-    meta: { title: '学生管理', icon: 'el-icon-s-home' },
+    meta: { title: '学生管理', icon: 'el-icon-user-solid' },
     children: [
       {
         path: 'Update',
         name: 'Update',
         component: () => import('@/views/student/stuUpdate'),
-        meta: { title: '更新学生信息', icon: 'el-icon-s-home' }
+        meta: { title: '更新学生信息', icon: 'el-icon-user-solid' }
       }
     ]
   },
@@ -97,19 +97,20 @@ export const asyncRoutes = [
     name: '院系统计',
     component: Layout,
     hidden: false,
-    meta: { title: '院系统计', icon: 'el-icon-s-home' },
+    redirect: '/Department/GradeScale',
+    meta: { title: '院系统计', icon: 'el-icon-star-on' },
     children: [
       {
         path: 'GradeScale',
         name: 'GradeScale',
         component: () => import('@/views/department/scale'),
-        meta: { title: '总体成绩', icon: 'el-icon-s-home' }
+        meta: { title: '总体成绩', icon: 'el-icon-s-platform' }
       },
       {
         path: 'GradeRank',
         name: 'GradeRank',
         component: () => import('@/views/department/rank'),
-        meta: { title: '系排名', icon: 'el-icon-s-home' }
+        meta: { title: '系排名', icon: 'el-icon-s-data' }
       }
     ]
   },
@@ -119,25 +120,26 @@ export const asyncRoutes = [
     name: '课程',
     component: Layout,
     hidden: false,
-    meta: { title: '课程', icon: 'el-icon-s-home' },
+    redirect: '/Course/CourseScale',
+    meta: { title: '课程', icon: 'el-icon-s-order' },
     children: [
       {
         path: 'CourseScale',
         name: 'CourseScale',
         component: () => import('@/views/course/coursetable'),
-        meta: { title: '课程总览', icon: 'el-icon-s-home' }
+        meta: { title: '课程总览', icon: 'el-icon-menu' }
       },
       {
         path: 'InCourse',
         name: 'InCourse',
         component: () => import('@/views/course/incourse'),
-        meta: { title: '录入成绩', icon: 'el-icon-s-home' }
+        meta: { title: '录入成绩', icon: 'el-icon-s-release' }
       },
       {
         path: 'OutCourse',
         name: 'OutCourse',
         component: () => import('@/views/course/outcourse'),
-        meta: { title: '添加学生', icon: 'el-icon-s-home' }
+        meta: { title: '添加学生', icon: 'el-icon-circle-plus' }
       }
     ]
   },
