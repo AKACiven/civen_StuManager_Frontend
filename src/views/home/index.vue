@@ -50,7 +50,7 @@
           align="center"
           fixed="right"
           label="操作"
-          width="500">
+          width="250">
           <template slot="header" slot-scope="scope">
             <el-input
               v-model="search"
